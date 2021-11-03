@@ -14,8 +14,8 @@
 // done=> // I numeri nella lista delle bombe non possono essere duplicati.
 // In seguito l’utente clicca su ogni cella:
 // se il numero è presente nella lista dei numeri generati - abbiamo calpestato una bomba - la cella si colora di rosso e la partita termina,
+    // se il numero che compare è uguale a un numero incluso  nell'array si ferma il gioco e cambiano di colore tutti i numeri dell'array
 // altrimenti la cella cliccata si colora di azzurro e l’utente può continuare a cliccare sulle altre celle.
-// (come detto sull’effetiva interfaccia fate voi, non ci son specifiche vincolanti, ma partite semplici)
 // La partita termina quando il giocatore clicca su una bomba
 // o raggiunge il numero massimo possibile di numeri consentiti.
 // Al termine della partita il software deve scoprire tutte le bombe e comunicare il punteggio, cioè il numero di volte che l’utente ha cliccato un quadratino con un numero consentito. 
@@ -61,6 +61,10 @@ function generateGrid(levels, baseClass) {
                 box.innerText = i;
                 box.classList.add("colore");
                 console.log('click');
+                let copia = numeriRandom.includes(i)
+                if(copia == true){
+                    box.classList.add("bomba")
+                }
         });
         creazione.appendChild(box);
     }
