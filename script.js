@@ -45,25 +45,39 @@ if (livelloScelto === "1"){
 console.log(numeriRandom);
 
 
+evento
 
+1
+2
+evento
+3
+4
+5
+6
 
-
-
-
+// seleziono tutti con querySelectorAll quando clicco su un numero presente nell'array
 
 //funzione che mi genera la griglia in base a che classe scelgo
 function generateGrid(levels, baseClass) {
+
     for (let i = 1; i <= levels; i++){ 
         let box = document.createElement('div');
         box.classList.add(baseClass);
-        box.addEventListener("click", 
+        box.addEventListener("click",
             function() {
                 box.innerText = i;
                 box.classList.add("colore");
                 console.log('click');
                 let copia = numeriRandom.includes(i)
-                if(copia == true){
-                    box.classList.add("bomba")
+                if(copia == false){
+                        box.classList.add("colore")   
+                }else {
+                        for (let i = 1; i <= levels; i++) {
+                            if (numeriRandom.includes(i)) { 
+                            document.querySelectorAll('.' + baseClass)[i].classList.add('bomba');
+                            }
+                        }
+                        console.log(box);
                 }
         });
         creazione.appendChild(box);
