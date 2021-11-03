@@ -42,7 +42,7 @@ if (livelloScelto === "1"){
     generateGrid(49, "square3");
     generatoreNumRandom(49);
 }
-// let tutti = document.getElementsByClassName("colore")
+
 // if(tutti.lenght === (numeriRandom.length - 49)){
 //     alert("hai vinto")
 // }
@@ -56,7 +56,7 @@ function generateGrid(levels, baseClass) {
         box.classList.add(baseClass);
         box.addEventListener("click",
             function() {
-                
+                let tutti = document.getElementsByClassName("colore")
                 box.innerText = i;
                 box.classList.add("colore");
                 console.log('click');
@@ -81,7 +81,7 @@ function generateGrid(levels, baseClass) {
 }
 //funzione che genera 16 numeri con argomento totale di numeri casuali tra cui scegliere
 function generatoreNumRandom(tot){
-    while (numeriRandom.length < 1){
+    while (numeriRandom.length < 16){
         let numbers = Math.floor(Math.random()*tot +1);
         let doppio = numeriRandom.includes(numbers);
         if (doppio == false){
