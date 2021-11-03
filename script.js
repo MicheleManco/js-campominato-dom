@@ -42,20 +42,11 @@ if (livelloScelto === "1"){
     generateGrid(49, "square3");
     generatoreNumRandom(49);
 }
-console.log(numeriRandom);
-
-
-evento
-
-1
-2
-evento
-3
-4
-5
-6
-
-// seleziono tutti con querySelectorAll quando clicco su un numero presente nell'array
+// let tutti = document.getElementsByClassName("colore")
+// if(tutti.lenght === (numeriRandom.length - 49)){
+//     alert("hai vinto")
+// }
+// console.log(numeriRandom.length, tutti.length);
 
 //funzione che mi genera la griglia in base a che classe scelgo
 function generateGrid(levels, baseClass) {
@@ -65,27 +56,32 @@ function generateGrid(levels, baseClass) {
         box.classList.add(baseClass);
         box.addEventListener("click",
             function() {
+                
                 box.innerText = i;
                 box.classList.add("colore");
                 console.log('click');
                 let copia = numeriRandom.includes(i)
+                
                 if(copia == false){
-                        box.classList.add("colore")   
-                }else {
-                        for (let i = 1; i <= levels; i++) {
+                        box.classList.add("colore")
+                }else { 
+                        for (let i = 1; i <= levels; i++) { 
                             if (numeriRandom.includes(i)) { 
-                            document.querySelectorAll('.' + baseClass)[i].classList.add('bomba');
+                            document.querySelectorAll('.' + baseClass)[i-1].classList.add('bomba');
+                            document.querySelectorAll('.' + baseClass)[i-1].innerText = i
                             }
                         }
-                        console.log(box);
+                        alert(`hai totalizzato ${tutti.length - 1 }`)
                 }
+                
+               
         });
         creazione.appendChild(box);
     }
 }
 //funzione che genera 16 numeri con argomento totale di numeri casuali tra cui scegliere
 function generatoreNumRandom(tot){
-    while (numeriRandom.length < 16){
+    while (numeriRandom.length < 1){
         let numbers = Math.floor(Math.random()*tot +1);
         let doppio = numeriRandom.includes(numbers);
         if (doppio == false){
@@ -93,3 +89,4 @@ function generatoreNumRandom(tot){
         }
     }
 }
+console.log(numeriRandom);
